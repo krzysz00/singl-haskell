@@ -1,9 +1,10 @@
 module Main where
 
-import Text.ParserCombinators.Parsec
-import Control.Applicative
+import Text.ParserCombinators.Parsec (parse)
 
 import Types
+import Parser
 
 main :: IO ()
-main = return ()
+main = interact (show . parse singl "(input)")
+
