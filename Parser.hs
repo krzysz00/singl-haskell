@@ -86,11 +86,18 @@ assign = do
   char '!'
   return $ Assign v g
 
+comment :: Parser Token
+comment = do 
+  char '\^C'
+  skipMany (noneOf "\^C") 
+  char '\^C'
+  e <- expression
+  return $ Comment e
 expression :: Parser Token
 expression = variable <|> address <|> dereference <|> output <|> input
-             <|> add <|> Parser.subtract <|> multiply <|> divide <|> modulo 
-             <|> argument <|> eqZero <|> leqZero <|> loop
-             <|> group <|> assign
+  <|> add <|> Parser.subtract <|> multiply <|> divide <|> modulo 
+  <|> argument <|> eqZero <|> leqZero <|> loop
+  <|> group <|> assign <|> comment
 
 singl :: Parser [Token]
 singl = many expression

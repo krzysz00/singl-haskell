@@ -15,4 +15,6 @@ data Token = Address !Integer
            | LeqZero Token Token Token
            | Loop Token Token
            | Group [Token] 
-           | Assign Token [Token] deriving (Eq, Show, Read)
+           | Assign Token [Token] 
+             -- Comment holds the token after it
+           | Comment Token deriving (Eq, Show, Read)
