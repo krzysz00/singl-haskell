@@ -10,6 +10,7 @@ Cabal-Version:  >=1.12
 
 executable singl
   main-is:      singl.hs
-  other-modules: Types, Parser
-  build-depends: base >= 4 && < 5, parsec >= 3
+  other-modules: Types, Parser, Evaluator
+  build-depends: base >= 4 && < 5, parsec >= 3, mtl >= 2
+                 , containers >= 0.5
   default-language: Haskell2010

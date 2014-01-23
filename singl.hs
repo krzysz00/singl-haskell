@@ -4,7 +4,12 @@ import Text.ParserCombinators.Parsec (parse)
 
 import Types
 import Parser
+import Evaluator
 
 main :: IO ()
-main = interact (show . parse singl "(input)")
+main = do
+       p <- getContents 
+       case parse singl "(input)" p of
+         Left e -> print e >> return ()
+         Right program -> evaluate program
 
